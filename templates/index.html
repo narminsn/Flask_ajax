@@ -1,0 +1,112 @@
+
+  {% if session["logged_in"] %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="nav1">
+      <div class="container">
+          <div class="logo">
+                  <a href="" alt="agoodmovietowatch" class="newlogona">
+                          <span class="header-logo-text">a<b>goodmovie</b>towatch
+                          </span>
+                          </a>
+
+          </div>
+        
+          <div>
+              <ul>
+                 {% if session["logged_in"] %}
+                  <li><a href="/movies">Movies</a></li>
+                  <li class="random"><a href="/random" class="random">Random</a></li>
+                  <li class="last24h"><a href="/last24h" class="last24h">Popular in the Last 24h</a></li>
+                  <li class="sign" ><a href="/login" class="last24h">{{session["username"]}}</a></li>
+                  <li class="sign"><a href="/logout" class="last24h">Log out</a></li>
+
+              
+              {% else %}
+
+                  <li><a href="/movies">Movies</a></li>
+                  <li class="random"><a href="/random" class="random">Random</a></li>
+                  <li class="last24h"><a href="/last24h" class="last24h">Popular in the Last 24h</a></li>
+                  <li class="sign" ><a href="/login" class="last24h">Log In</a></li>
+                  <li class="sign"><a href="/signup" class="last24h">Sign UP</a></li>
+              {% endif %}
+                  
+              </ul>
+          </div>
+            
+
+      </div>
+  </div>
+
+
+
+
+  <div class="one">
+        <div class="container">
+                <div class="row result">
+          
+                </div>
+            </div>
+
+  </div>
+  <div class="two" style="display:none;">
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div class="col-md-6 img" style="width: 400px; margin-top: 83px;">
+                        
+                        
+
+                                </div>
+                                <div class="col-md-6 text" style="margin-top: 83px !important; color: #0c0c0c;">
+                                    
+            
+                                </div>
+
+                    </div>
+                   
+                    <div class="col-md-12 iframee" style="margin-top: 43px; margin-left: 57px;">
+                           
+                            
+                    </div>
+                </div>
+            </div>
+  </div>
+  <div>
+      <div class="container">
+          <div class="row three">
+
+          </div>
+      </div>
+  </div>
+  {% else %}
+{% extends "login.html" %}
+
+
+  {% endif %}
+  
+
+   
+    
+    {% if data=="movie" %}
+     <script type="text/javascript" src="{{ url_for('static', filename='movie.js') }}"></script>
+
+    
+    
+    {% else %}
+    <script type="text/javascript" src="{{ url_for('static', filename='random.js') }}"></script>
+    {% endif %}
+
+  
+</body>
+</html>
